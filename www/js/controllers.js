@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['notification.services','location.services'])
 
 .controller('DashCtrl', function($scope) {})
 
@@ -25,4 +25,9 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
+  $scope.ShowHistory=function(){
+
+  }
 });
+
+

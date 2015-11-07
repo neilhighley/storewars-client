@@ -1,1 +1,5 @@
 /* Empty. Add your own CSS if you like */
+.thisapp-tabs-color-active-positive{
+  background-color: #3c3c3c;
+  color:red;
+}
