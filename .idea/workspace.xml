@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cb77f3b2-8a6a-4151-b11f-729f99a02840" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="storewars.iws" />
@@ -206,7 +205,13 @@
       <option name="project" value="LOCAL" />
       <updated>1446905552815</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated gitignore for workspace,vcs and task only">
+      <created>1446906067355</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1446906067355</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -238,7 +243,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="updated gitignore for workspace and task only" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore for workspace and task only" />
+    <MESSAGE value="updated gitignore for workspace,vcs and task only" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated gitignore for workspace,vcs and task only" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
