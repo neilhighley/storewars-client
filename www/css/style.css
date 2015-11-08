@@ -3,3 +3,14 @@
   background-color: #3c3c3c;
   color:red;
 }
+.event-list{
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.redteam-select{
+  background-color:red;
+  border:2px solid yellow;
+}
+.blueteam-select{
+  background-color:blue;
+}

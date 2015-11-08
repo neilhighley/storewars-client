@@ -17,17 +17,52 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+    <script src="js/configurationServices.js"></script>
 
     <script src="js/notificationService.js"></script>
     <script src="js/notificationController.js"></script>
 
     <script src="js/camera.js"></script>
     <script src="js/streetController.js"></script>
+    <script src="js/mapController.js"></script>
+    <script src="js/mapServices.js"></script>
 
     <script src="js/locationcontroller.js"></script>
     <script src="js/locationservices.js"></script>
 
+    <script src="js/yoyoController.js"></script>
+    <script src="js/yoyoService.js"></script>
+
+
     <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+
+    <script>
+      var map;
+      function onLocationRetrieved(loc){
+        map.animateCamera({
+          'target': loc.latLng,
+          'tilt': 60,
+          'zoom': 18,
+          'bearing': 140,
+          'duration': 5000 // 5 seconds
+        });
+      }
+      document.addEventListener("deviceready", function()  {
+        //var mdiv=$("#map_canvas");
+        var div = document.getElementById("map_canvas");
+        map = plugin.google.maps.Map.getMap(div);
+        map.setMapTypeId(plugin.google.maps.MapTypeId.HYBRID);
+
+        //refreshMe();
+        //map.on(plugin.google.maps.event.CAMERA_CHANGE, onMapCameraChanged);
+
+        map.getMyLocation(onLocationRetrieved, function(){
+          console.log("MAP ERROR");
+          alert("Map error");
+        });
+
+      });
+    </script>
 
   </head>
   <body ng-app="starter">

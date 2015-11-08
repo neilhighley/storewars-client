@@ -4,6 +4,7 @@ angular.module('camera.services', [])
 
   return {
     getPicture: function(options) {
+
       var q = $q.defer();
 
       navigator.camera.getPicture(function(result) {
@@ -16,4 +17,7 @@ angular.module('camera.services', [])
       return q.promise;
     }
   }
-}]);
+}])
+  .module.config(function($compileProvider){
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+})

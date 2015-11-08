@@ -8,3 +8,5 @@ plugins/
 **/.idea/workspace.xml
 **/.idea/tasks.xml
 **/.idea/vcs.xml
+
+www/js/configurationServices.js

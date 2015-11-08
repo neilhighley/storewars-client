@@ -17,7 +17,7 @@ angular.module('location.services', [])
             Lon:10,
             Lat:100,
           }
-        ]
+        ];
 
         return obj;
       }

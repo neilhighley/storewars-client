@@ -1,7 +1,11 @@
-<ion-view view-title="Chats">
+<ion-view view-title="LeafletMapView">
   <ion-content>
-    <ion-list>
+    <leaflet defaults="map.defaults" center="map.center" markers="map.markers" ng-if="map"></leaflet>
+
+    <button id="button">Full Screen Map</button>
+    <ion-list class="event-list">
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
         <h2>{{chat.name}}</h2>
         <p>{{chat.lastText}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>

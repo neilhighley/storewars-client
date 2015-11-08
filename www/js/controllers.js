@@ -23,7 +23,8 @@ angular.module('starter.controllers', ['notification.services','location.service
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
-    enableFriends: true
+    enableFriends: true,
+    IsRedTeam:true
   };
   $scope.ShowHistory=function(){
 

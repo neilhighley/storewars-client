@@ -13,7 +13,11 @@ angular.module('starter', ['ionic',
   'notification.services',
   'camera.services',
   'streetview.controllers',
-  'location.controllers'
+  'mapview.controllers',
+  'location.controllers',
+  'configuration.services',
+  'map.services',
+  'yoyo.controllers'
 ])
 
 .run(function($ionicPlatform) {
@@ -49,15 +53,35 @@ angular.module('starter', ['ionic',
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/streetview.html',
-        controller: 'StreetViewCtrl'
+    .state('tab.view', {
+      url: '/view',
+      views: {
+        'tab-view': {
+          templateUrl: 'templates/streetview.html',
+          controller: 'StreetViewCtrl'
+        }
       }
-    }
-  })
+    })
+
+    .state('tab.yoyo', {
+      url: '/yoyo',
+      views: {
+        'tab-yoyo': {
+          templateUrl: 'templates/yoyoview.html',
+          controller: 'YoyoViewCtrl'
+        }
+      }
+    })
+
+    .state('tab.map', {
+      url: '/map',
+      views: {
+        'tab-map': {
+          templateUrl: 'templates/mapview.html',
+          controller: 'MapViewCtrl'
+        }
+      }
+    })
 
   .state('tab.chats', {
       url: '/chats',
@@ -89,6 +113,6 @@ angular.module('starter', ['ionic',
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/map');
 
 });

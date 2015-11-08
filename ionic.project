@@ -1,4 +1,4 @@
 {
-  "name": "example",
-  "app_id": ""
+  "name": "storewars",
+  "app_id": "com.storewars"
 }

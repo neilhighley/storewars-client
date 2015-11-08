@@ -1,18 +1,21 @@
-angular.module('notification.services', [])
+angular.module('notification.services', ['configuration.services'])
 
-  .factory('pusherNotification', function() {
-    var API_KEY="7aa4cf1670199fafc250";
-    var PUSHER_CHANNEL="StoreWars";
-    var PUSHER_EVENT="areaevent";
+  .factory('pusherNotification', function($rootScope,appconfig) {
 
       return{
-        init:function(callback){
-          var pusher = new Pusher(API_KEY, {
+        init:function(eventname){
+          //console.log(callback);
+          var conf=appconfig.get();
+          console.log("pusher initialised");
+
+          var pusher = new Pusher(conf.Pusher.API_KEY, {
             encrypted: true
           });
-          var channel = pusher.subscribe(PUSHER_CHANNEL);
-          channel.bind(PUSHER_EVENT, function(data) {
-            callback(data.message);
+
+          var channel = pusher.subscribe(conf.Pusher.CHANNEL);
+          channel.bind(conf.Pusher.EVENT, function(data) {
+            console.log("msg in");
+            $rootScope.$broadcast(eventname,data);
           });
         }
       }

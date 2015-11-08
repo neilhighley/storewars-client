@@ -1,11 +1,17 @@
 <ion-view view-title="Account">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
+    <ion-toggle ng-model="settings.enableFriends">
         Enable Polling
     </ion-toggle>
     <ion-item>
-      <button type="button" ng-click="ShowHistory()"/>
+      <button type="button" ng-click="ShowHistory()">Show History</button>
+    </ion-item>
+    <ion-item>
+      <button class="redteam-select" ng-click="SelectRedTeam()">Red</button>
+      or
+      <button class="blueteam-select" ng-click="SelectBlueTeam()">Red</button>
+
     </ion-item>
     </ion-list>
   </ion-content>

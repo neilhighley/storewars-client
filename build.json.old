@@ -1,0 +1,18 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "..\platforms\andoroid\storewars.keystore",
+      "storePassword": "storewars",
+      "alias": "storewars",
+      "password" : "shamalan",
+      "keystoreType": ""
+    },
+    "release": {
+      "keystore": "..\platforms\andoroid\storewars.keystore",
+      "storePassword": "shamalan",
+      "alias": "storewars",
+      "password" : "shamalan",
+      "keystoreType": ""
+    }
+  }
+}
