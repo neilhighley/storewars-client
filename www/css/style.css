@@ -14,3 +14,13 @@
 .blueteam-select{
   background-color:blue;
 }
+#msgboxalert{
+  position:absolute;
+  top:350px;
+  left:50px;
+  width:200px;
+  height:100px;
+  background-color:yellow;
+  padding:10px;
+  display:none;
+}

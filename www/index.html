@@ -25,6 +25,7 @@
     <script src="js/camera.js"></script>
     <script src="js/streetController.js"></script>
     <script src="js/mapController.js"></script>
+
     <script src="js/mapServices.js"></script>
 
     <script src="js/locationcontroller.js"></script>
@@ -33,35 +34,82 @@
     <script src="js/yoyoController.js"></script>
     <script src="js/yoyoService.js"></script>
 
+    <!--
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <script src="/js/angular-leaflet-directive.min.js"></script>
 
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css">
+    <script src="js/leafletmapController.js"></script>
+    -->
     <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 
     <script>
       var map;
+      var currlocation;
+
+      function scatterMarkers(loc){
+        //alert("Lon:"+loc.latLng.lng+", lat:"+loc.latLng.lat);
+
+        var places=[{lng:-0.0868646,lat:51.52390,name:"KFC",color:"yellow"},
+          {lng:-0.0868647,lat:51.52391,name:"Costa",color:"blue"},
+          {lng:-0.0868648,lat:51.52392,name:"McDonalds",color:"red"},
+          {lng:-0.0868649,lat:51.52393,name:"Big Kahuna",color:"yellow"},
+          {lng:-0.0868656,lat:51.52394,name:"Starbucks",color:"red"}
+        ];
+        for(var i=0;i<5;i++){
+          var thislocation=new plugin.google.maps.LatLng(places[i].lat, places[i].lng);
+
+          map.addMarker({
+            'position': thislocation,
+            'title': places[i].name,
+            icon:places[i].color,
+            animation: plugin.google.maps.Animation.DROP
+          }, function(marker) {
+            marker.showInfoWindow();
+          });
+        }
+      }
+
+      function onArrived(){
+        var msg="Your location";
+
+        map.addMarker({
+          'position': currlocation.latLng,
+          'title': msg,
+          icon:'white',
+          animation: plugin.google.maps.Animation.DROP
+        }, function(marker) {
+          marker.showInfoWindow();
+        });
+       scatterMarkers(currlocation);
+
+      }
       function onLocationRetrieved(loc){
+        //alert("locrecvd");
+        currlocation=loc;
         map.animateCamera({
           'target': loc.latLng,
           'tilt': 60,
           'zoom': 18,
           'bearing': 140,
           'duration': 5000 // 5 seconds
-        });
+        },onArrived);
       }
-      document.addEventListener("deviceready", function()  {
-        //var mdiv=$("#map_canvas");
-        var div = document.getElementById("map_canvas");
-        map = plugin.google.maps.Map.getMap(div);
-        map.setMapTypeId(plugin.google.maps.MapTypeId.HYBRID);
+      document.addEventListener("deviceready", function() {
+        var mapDiv = document.getElementById("map_canvas");
+        map = plugin.google.maps.Map.getMap(mapDiv);
+        map.on(plugin.google.maps.event.MAP_READY, onMapInit);
+      });
 
-        //refreshMe();
-        //map.on(plugin.google.maps.event.CAMERA_CHANGE, onMapCameraChanged);
-
+      function onMapInit(map) {
         map.getMyLocation(onLocationRetrieved, function(){
           console.log("MAP ERROR");
           alert("Map error");
         });
+      }
 
-      });
+
     </script>
 
   </head>

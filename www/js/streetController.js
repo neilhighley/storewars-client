@@ -4,9 +4,7 @@ angular.module('streetview.controllers', ['camera.services','notification.servic
 
     $scope.currentImage="";
 
-    //pusherNotification.init($scope.ProcessPusherEvent);
     $ionicPlatform.ready(function () {
-      //pusherNotification.init(PUSHER_EVENT_IN);
       alert("updating camera");
       //take photo immediately
       camera.getPicture().then(function(imageURI) {

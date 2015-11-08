@@ -21,11 +21,22 @@ angular.module('starter.controllers', ['notification.services','location.service
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope,$rootScope) {
   $scope.settings = {
     enableFriends: true,
     IsRedTeam:true
   };
+  $scope.SelectRedTeam=function(){
+    $rootScope.team="red";
+    $rootScope.messageNumber=0;
+    alert("R");
+  };
+  $scope.SelectBlueTeam=function(){
+    $rootScope.team="blue";
+    $rootScope.messageNumber=0;
+    alert("B");
+  }
+
   $scope.ShowHistory=function(){
 
   }

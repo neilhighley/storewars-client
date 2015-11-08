@@ -1,5 +1,5 @@
 angular.module('yoyo.controllers', ['yoyo.services'])
-  .controller('YoyoViewCtrl',function($scope,yoyoService){
+  .controller('YoyoViewCtrl',function($scope,$rootScope,yoyoService){
 
     yoyoService.init();
 

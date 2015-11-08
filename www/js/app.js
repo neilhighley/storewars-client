@@ -73,6 +73,7 @@ angular.module('starter', ['ionic',
       }
     })
 
+
     .state('tab.map', {
       url: '/map',
       views: {
@@ -82,6 +83,17 @@ angular.module('starter', ['ionic',
         }
       }
     })
+
+/*
+    .state('tab.lmap', {
+      url: '/lmap',
+      views: {
+        'tab-lmap': {
+          templateUrl: 'templates/leafletmapview.html',
+          controller: 'LeafletMapViewCtrl'
+        }
+      }
+    })*/
 
   .state('tab.chats', {
       url: '/chats',

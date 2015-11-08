@@ -14,7 +14,7 @@ angular.module('notification.services', ['configuration.services'])
 
           var channel = pusher.subscribe(conf.Pusher.CHANNEL);
           channel.bind(conf.Pusher.EVENT, function(data) {
-            console.log("msg in");
+            //alert("msg in");
             $rootScope.$broadcast(eventname,data);
           });
         }

@@ -10,14 +10,16 @@ angular.module('mapview.controllers', ['camera.services','notification.services'
     ];
     // Initialize the map view
 
-    //var div = document.getElementById("map_canvas");
-    //mapService.setMap(div);
+    //$scope.ShowMessage();
 
     $ionicPlatform.ready(function () {
+      alert("pusher init");
       pusherNotification.init(PUSHER_EVENT_IN);
+
     });
 
     $rootScope.$on(PUSHER_EVENT_IN,function(evt,args){
+
       $scope.ProcessPusherEvent(evt,args);
     });
 
@@ -29,11 +31,35 @@ angular.module('mapview.controllers', ['camera.services','notification.services'
       $scope.settings.camerafeed="img/streetscene.jpg";
     };
 
-    $scope.ProcessPusherEvent=function(evt,arg){
-      console.log({"Process pusher":arg});
+    $scope.ShowMessage=function(obj){
+      var msgBox = document.getElementById("msgboxalert");
+      $("#msgboxalert").html("<p>MESSAGE HERE</p>");
+      $("#msgboxalert").css({'display':'block'});
+    }
+    $scope.HideMessage=function(obj){
+      var msgBox = document.getElementById("msgboxalert");
+      $("#msgboxalert").css({'display':'none'});
+    }
 
-      alert(arg);
-      mapService.refresh();
+    $scope.ProcessPusherEvent=function(evt,arg){
+      if($rootScope.team==undefined){
+        $rootScope.team="red";
+
+      }
+      if($rootScope.messageNumber==undefined){
+        $rootScope.messageNumber=0;
+      }
+      if(arg.target.identifier!=$rootScope.team){
+        $rootScope.messageNumber++;
+        alert(arg.name);
+        alert(arg.flavour)
+      }
+
+
+      if(IsAMessageAlert){
+        $scope.ShowMessage(evt);
+      }
+
     };
 
   });
